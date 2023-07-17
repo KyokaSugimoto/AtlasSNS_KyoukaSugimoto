@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+html {}
+
+body {}
+
+/* header */
+header {
+    background: #186AC9;
+    height: 80px;
+    color: #fff;
+    padding: 5px;
+}
+
+#user {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: right;
+    /* letter-spacing: 10px; */
+    text-align: right;
+    margin-right: 7rem;
+    margin-top: -20px;
+
+}
+
+#user .username {
+    margin-right: 30px;
+}
+
+h1 img {
+    position: relative;
+    width: 8%;
+    height: 8%;
+    margin-top: 20px;
+    margin-left: 20px;
+
+
+}
+
+#user img {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+
+}
+
+
+/* アコーディオンメニュー */
+.accordion-icon {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    line-height: 1;
+    width: 1em;
+    height: 1em;
+    border: 3px solid #fff;
+    border-left: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+    transform: translateY(-25%) rotate(135deg);
+}
+
+.accordion-icon.active {
+    transform: translateY(-25%) rotate(315deg);
+    -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    color: #fff;
+}
+
+.accordion-content {
+    position: absolute;
+    display: none;
+}
+
+ul {
+    padding: 10px;
+    background-color: #fff;
+}
+
+ul li {
+    margin: 30px;
+    text-align: center;
+}
+
+
+
+/* main content */
+#row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#container {
+    flex: 0 0 80%;
+}
+
+#side-bar {
+    flex: 0 0 19%;
+    border-left: 1px solid #727272;
+}
