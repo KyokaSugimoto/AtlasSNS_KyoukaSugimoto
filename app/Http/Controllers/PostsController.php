@@ -12,23 +12,25 @@ class PostsController extends Controller
 {
 
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(){
           $posts=Post::get();
-          $user_id=Post::get('user_id');
         return view('posts.index',['post'=>$posts]);
     }
 
     public function post(Request $request){
-        $newpost=$request->input('newpost');
+        $newpost=$request->input('tweet');
+         if(!empty($newpost)){
         Post::create ([
             'post'=>$newpost,
+            'user_id'=>Auth::user()->id,
         ]);
-        return back();
+        return redirect('/top');
+    }
 
     }
 }

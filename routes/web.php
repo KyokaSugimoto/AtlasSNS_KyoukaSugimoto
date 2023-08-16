@@ -42,10 +42,11 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 // Route::group(['middleware' => 'auth'],function(){
 // ログイン後最初の画面
+
 Route::get('/top','PostsController@index');
 Route::post('/top','PostsController@index');
 
-// Route::post('/top','PostsController@post');
+Route::post('/top','PostsController@post');
 
 // Route::get('/top','UsersController@show');
 // Route::post('/top','UsersController@show');

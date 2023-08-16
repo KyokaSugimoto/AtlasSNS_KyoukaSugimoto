@@ -6,8 +6,7 @@
 <div class='create-post'>
 <img src="{{asset ('images/icon1.png')}}">
 {!! Form::open(['url' => '/top']) !!}
-<input class="text" type="text" name="newpost"placeholder="　投稿内容を入力してください" maxlength="150" minlength="1" required>
-
+<input class="text" type="text" name="tweet"placeholder="　投稿内容を入力してください" maxlength="150" minlength="1" required>
 <span class="send-icon">
 		<button type="submit" class="btn btn-default">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
