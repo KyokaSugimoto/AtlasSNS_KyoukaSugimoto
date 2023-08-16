@@ -73,19 +73,48 @@ h1 img {
 
 .accordion-content {
     position: absolute;
+    right: 0;
+    margin: 2em;
     display: none;
 }
 
-ul {
-    padding: 10px;
+.accordion-content.active {
+    display: block;
     background-color: #fff;
 }
 
-ul li {
-    margin: 30px;
-    text-align: center;
+ul {
+    display: block;
+    width: 14rem;
+    height: 20rem;
+    background-color: #fff;
+    border: solid 5px #666;
+
 }
 
+ul li {
+    padding: 35px;
+    text-align: center;
+    align-items: center;
+}
+
+ul li a {
+    display: block;
+    cursor: pointer;
+    color: #727272;
+    font-size: 1.25rem;
+    height: 40px;
+
+
+}
+
+.accordion-content :nth-child(2) {
+    background-color: #00f
+}
+
+.accordion-content :nth-child(2) a {
+    color: #fff;
+}
 
 
 /* main content */
@@ -101,4 +130,83 @@ ul li {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+/* トップページ */
+.create-post {
+    padding: 20px;
+}
+
+.text {
+    width: 70%;
+    height: 10rem;
+
+}
+
+.send-icon {
+    display: inline-block;
+    background-color: #186AC9;
+    border-radius: 20%;
+}
+
+.bi-send {
+    color: #fff;
+}
+
+
+.post-box {
+    background-color: #fff;
+    border: #727272 solid 5px;
+    height: 7rem;
+}
+
+.bi-pencil-square {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 60px;
+    margin-right: 10%;
+    color: #66ffcc;
+}
+
+
+.bi-trash-fill {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 60px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 3px;
+    border: #ff0000 solid 2px;
+    margin-right: 10%;
+    border-radius: 3px;
+
+}
+
+/* 検索ページ */
+.search-content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.search-box {
+    height: 2.5rem;
+    width: 15rem;
+    border: #666 solid 2px;
+    border-radius: 3px;
+}
+
+.search-icon {
+    display: inline-block;
+    background-color: #186AC9;
+    border-radius: 20%;
+}
+
+.bi-search {
+    color: #fff;
+}
+
+.post {
+    width: 80%;
 }

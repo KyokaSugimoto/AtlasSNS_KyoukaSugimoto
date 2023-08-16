@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/top']) !!}
+{!! Form::open(['url' => '/login']) !!}
 @csrf
 
 <p>AtlasSNSへようこそ</p>
@@ -11,6 +11,7 @@
 {{ Form::text('mail',null,['class' => 'input']) }}
 {{ Form::label('password') }}
 {{ Form::password('password',['class' => 'input']) }}
+{{ Form::hidden('username','id')}}
 
 {{ Form::submit('ログイン',['class'=>'login']) }}
 

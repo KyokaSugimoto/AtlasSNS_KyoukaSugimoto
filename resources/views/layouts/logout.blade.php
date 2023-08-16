@@ -18,6 +18,8 @@
   <!--iphoneのアプリアイコン指定-->
   <link rel="apple-touch-icon-precomposed" href="{{ asset('images/atlas.png') }}" />
   <!--OGPタグ/twitterカード-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{{asset('js/SNS.js')}}"></script>
 </head>
 <body>
   <header>
@@ -27,7 +29,5 @@
   <div id="container">
     @yield('content')
   </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="{{asset('js/SNS.js')}}"></script>
 </body>
 </html>

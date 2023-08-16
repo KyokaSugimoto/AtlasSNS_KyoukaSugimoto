@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="search-content">
-{!! Form::open(['url' => '/search_result', 'method' => 'get']) !!}
+{!! Form::open(['url' => '/search_result']) !!}
 @csrf
 {{ Form::text('search',null,['class' => 'search-box','placeholder' => '　ユーザー名']) }}
 <span class="search-icon">
@@ -14,12 +14,15 @@
     </button>
 </span>
 {!! Form::close() !!}
+
+<h2>検索ワード：{{ Session('keyword')}}</h2>
+
 </div>
 
 <table>
-@foreach($user as $user)
+@foreach($result as $result)
 <tr>
-  <td>{{ $user->username }}</td>
+  <td>{{ $result->username }}</td>
 </tr>
 @endforeach
 </table>

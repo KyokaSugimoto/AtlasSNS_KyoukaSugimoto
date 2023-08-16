@@ -20,6 +20,7 @@
 
 
 //ログアウト中のページ
+// Route::group(['middleware' => 'guest'],function(){
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
@@ -31,27 +32,36 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
+// });
 
-Route::get('logout','Auth\LoginController@login');
+
 
 // Route::get('posts/index','PostsController@index')->middleware('LoginUserCheck');
 
 //ログイン中のページ
+
+// Route::group(['middleware' => 'auth'],function(){
 // ログイン後最初の画面
-
-
-Route::get('top',function(){return view('posts.index');})->middleware('auth');
-Route::post('top',function(){return view('posts.index');})->middleware('auth');
-
 Route::get('/top','PostsController@index');
 Route::post('/top','PostsController@index');
 
-Route::get('/top','PostsController@index')->middleware('sns');
-Route::post('/top','PostsController@index')->middleware('sns');
+// Route::post('/top','PostsController@post');
+
+// Route::get('/top','UsersController@show');
+// Route::post('/top','UsersController@show');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
+Route::post('/search','UsersController@search');
+
+Route::get('/search_result','UsersController@surf');
+Route::post('/search_result','UsersController@surf');
+
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+Route::get('logout','Auth\LoginController@login');
+
+// });

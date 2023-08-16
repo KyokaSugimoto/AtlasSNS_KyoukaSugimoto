@@ -17,15 +17,15 @@ class LoginUserCheck extends User
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        $mail = Auth::guard()->mail;
-        $requestMail = $request->input('mail');
+    // public function handle($request, Closure $next)
+    // {
+    //     $mail = Auth::user()->mail;
+    //     $requestMail = $request->input('mail');
 
-        if($mail == $requestMail)
-        {
-                    return $next($request);
-        }
-        return response(view("auth.login"));
-    }
+    //     if($mail == $requestMail)
+    //     {
+    //                 return $next('/top');
+    //     }
+    //     return response(view("auth.login"));
+    // }
 }

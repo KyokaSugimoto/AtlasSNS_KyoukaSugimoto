@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- boostrap読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--サイトのアイコン指定-->
     <link rel="icon" href="画像URL" sizes="16x16" type="image/png" />
     <link rel="icon" href="画像URL" sizes="32x32" type="image/png" />
@@ -18,20 +21,21 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="{{asset('js/SNS.js')}}"></script>
+    <script src="{{ asset('js/SNS.js') }}" defer></script>
 </head>
 <body>
 <header>
         <div id = "head">
         <h1><a href="/top"><img src="{{asset ('images/atlas.png')}}"></a></h1>
             <div id="user">
-                    <p class="username">〇〇さん</p>
+                    <p class="username">{{ Auth::User()->username}}さん</p>
                     <span class="accordion-icon"></span>
                 <ul class="accordion-content">
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+                    <li class="accordion-list"><a href="/top">ホーム</a></li>
+                    <li class="accordion-list"><a href="/profile">プロフィール</a></li>
+                    <li class="accordion-list"><a href="/logout">ログアウト</a></li>
                 </ul>
                 <img src="{{asset ('images/icon1.png')}}">
             </div>
@@ -48,19 +52,18 @@
                 <p>フォロー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
                 <p>〇〇名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="{{asset('js/SNS.js')}}"></script>
 </body>
+
 </html>
