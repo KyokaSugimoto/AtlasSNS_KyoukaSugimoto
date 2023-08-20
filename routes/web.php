@@ -43,10 +43,12 @@ Route::post('/added', 'Auth\RegisterController@added');
 // Route::group(['middleware' => 'auth'],function(){
 // ログイン後最初の画面
 
-Route::get('/top','PostsController@index');
-Route::post('/top','PostsController@index');
+Route::get('/top','PostsController@index')->name('default');
+Route::post('/top','PostsController@index')->name('default');
 
 Route::post('/top','PostsController@post');
+
+Route::post('/top/{id}/delete','PostsController@delete')->name('delete');
 
 // Route::get('/top','UsersController@show');
 // Route::post('/top','UsersController@show');

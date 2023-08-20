@@ -18,7 +18,7 @@ class PostsController extends Controller
     }
 
     public function index(){
-          $posts=Post::get();
+          $posts=Post::orderBy('created_at','asc')->get();
         return view('posts.index',['post'=>$posts]);
     }
 
@@ -32,5 +32,13 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+    }
+
+
+
+    public function delete($id){
+      $delete_post=Post::find($id);
+      $delete_post->delete();
+        return redirect('/top');
     }
 }

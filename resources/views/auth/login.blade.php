@@ -11,7 +11,6 @@
 {{ Form::text('mail',null,['class' => 'input']) }}
 {{ Form::label('password') }}
 {{ Form::password('password',['class' => 'input']) }}
-{{ Form::hidden('user_id',Auth::User()->id) }}
 
 {{ Form::submit('ログイン',['class'=>'login']) }}
 
