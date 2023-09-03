@@ -16,8 +16,6 @@
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
-
 
 //ログアウト中のページ
 // Route::group(['middleware' => 'guest'],function(){
@@ -25,9 +23,7 @@ Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 Route::get('/register', 'Auth\RegisterController@register_view');
-// Route::post('/register', 'Auth\RegisterController@register_view');
 
-// Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
@@ -36,22 +32,23 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 
 
-// Route::get('posts/index','PostsController@index')->middleware('LoginUserCheck');
 
 //ログイン中のページ
 
 // Route::group(['middleware' => 'auth'],function(){
 // ログイン後最初の画面
-
 Route::get('/top','PostsController@index')->name('default');
 Route::post('/top','PostsController@index')->name('default');
 
+
 Route::post('/top','PostsController@post');
+
+Route::post('/top/{id}/update','PostsController@update')->name('update');
 
 Route::post('/top/{id}/delete','PostsController@delete')->name('delete');
 
-// Route::get('/top','UsersController@show');
-// Route::post('/top','UsersController@show');
+
+
 
 Route::get('/profile','UsersController@profile');
 
@@ -62,8 +59,10 @@ Route::get('/search_result','UsersController@surf');
 Route::post('/search_result','UsersController@surf');
 
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','FollowsController@followList');
+
+Route::get('/follower-list','FollowsController@followerList');
+
 
 Route::get('logout','Auth\LoginController@login');
 

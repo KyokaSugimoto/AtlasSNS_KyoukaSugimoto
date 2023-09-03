@@ -37,7 +37,7 @@
                     <li class="accordion-list"><a href="/profile">プロフィール</a></li>
                     <li class="accordion-list"><a href="/logout">ログアウト</a></li>
                 </ul>
-                <img src="{{Auth::user()->images }}">
+                <!-- <img src="{{Auth::user()->images }}"> -->
             </div>
         </div>
 </header>
@@ -50,15 +50,16 @@
                 <p>{{ Auth::User()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $follow->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                 <p>{{ $followed->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
+
             <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
