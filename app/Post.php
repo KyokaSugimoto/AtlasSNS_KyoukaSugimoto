@@ -18,6 +18,10 @@ class Post extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    //     public function follows(){
+    //     return $this->belongsToMany('App\User','follows','user_id','id');
+    // }
+
     //
 
 }

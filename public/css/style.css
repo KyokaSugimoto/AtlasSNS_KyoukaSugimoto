@@ -241,6 +241,24 @@ button:hover {
     color: #fff;
 }
 
-.post {
-    width: 80%;
+.post {}
+
+/* プロフィール編集 */
+.edit-pro {
+    align-items: center;
+    font-family: 'Cherry Bomb One', cursive;
+    font-family: 'Monomaniac One', sans-serif;
+    font-family: 'Sawarabi Mincho', serif;
+}
+
+.edit-pro-form {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-top: 60px;
+}
+
+.edit-pro-form input {
+    border: 2px solid #cc99ff;
+    margin-bottom: 20px;
 }

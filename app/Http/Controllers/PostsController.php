@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Post;
+use App\Follow;
 use Auth;
 
 class PostsController extends Controller
@@ -18,8 +19,15 @@ class PostsController extends Controller
     }
 
     public function index(){
-          $posts=Post::orderBy('created_at','desc')->get();
-        return view('posts.index',['post'=>$posts]);
+        // ポストテーブルのレコード取得
+        $post=Post::get();
+        // フォーしている人のIDを取得
+        $following_id=Auth::user()->follows()->pluck('followed_id');
+        // dd();
+        $id=Auth::user()->id;
+          $posts=Post::with('user')->whereIn('user_id',$following_id)->orWhere('user_id',$id)->orderBy('created_at','desc')->get();
+        //   $posts=Post::orderBy('created_at','desc')->get();
+        return view('posts.index',compact('posts'));
     }
 
     public function post(Request $request){

@@ -15,17 +15,18 @@
 {!! Form::close() !!}
 </div>
 <table class="post">
-@foreach($post as $post)
+@foreach($posts as $posts)
 <tr class="post-box">
-  <td class="post-img">{{$post->user->images}} </td>
-  <td class="post-name">{{ $post->user->username}}</td>
-  <td class="post-comment">{{ $post->post }}</td>
-  <td class="post-date">{{ $post->created_at }}</td>
+  <td class="post-img"><img src="images/{{$posts->user->images}}"> </td>
+  <td class="post-img">{{$posts->user->id}} </td>
+  <td class="post-name">{{ $posts->user->username}}</td>
+  <td class="post-comment">{{ $posts->post }}</td>
+  <td class="post-date">{{ $posts->created_at }}</td>
 <!-- ログインユーザーの投稿には編集ボタンと削除ボタンを表示 -->
-@if($post->user_id==Auth::user()->id)
+@if($posts->user_id==Auth::user()->id)
 <!-- 編集ボタン -->
   <td class=edit-icon>
-    <a class="edit-icon" href="{{ route('update', ['id'=>$post->id]) }}" post="{{$post->post}}" post_id="{{$post->id}}">
+    <a class="edit-icon" href="{{ route('update', ['id'=>$posts->id]) }}" post="{{$posts->post}}" post_id="{{$posts->id}}">
       <button type="submit" id=edit-icon>
         <img src="images/edit.png" alt="編集ボタン">
       </button>
@@ -34,22 +35,16 @@
 
 <!-- 削除ボタン -->
 <td class="delete-icon">
-  <form action="{{ route('delete', ['id'=>$post->id]) }}" method="post" >
+  <form action="{{ route('delete', ['id'=>$posts->id]) }}" method="post" >
     @csrf
     <button type="submit">
   <img src="images/trash-h.png" alt="削除ボタン"  onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
   </button>
 </form>
 </td>
-@else
-<td></td>
-<td></td>
-@endif
-</tr>
-@endforeach
-
+<!-- 編集モーダル -->
 <div class="edit-modal">
-<form class="edit-modal modal-form" action="{{ route('update', ['id'=>$post->id]) }}" method="post" >
+<form class="edit-modal modal-form" action="{{ route('update', ['id'=>$posts->id]) }}" method="post" >
         <textarea class="modal-body" type="textarea" name="new-post" value=""></textarea>
           <input type="hidden" name="update_id" class="modal_id" value="">
         <button type="submit" class="edit-modal-icon">更新</button>
@@ -57,6 +52,15 @@
       {{ csrf_field()}}
   </form>
   </div>
+@else
+<td></td>
+<td></td>
+
+@endif
+</tr>
+@endforeach
+
+
 
 </table>
 @endsection

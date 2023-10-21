@@ -29,11 +29,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*',function($view)  {
+        View::composer('layouts/login',function($view)  {
             // フォロー数を定義した変数　follow を全ビューファイルで共有
-            $view->with('follow',Follow::where('followed_id',Auth::user()->id)->get());
+            $view->with('follow',Follow::where('following_id',Auth::user()->id)->get());
             // フォロー数を定義した変数　followed を全ビューファイルで共有
-            $view->with('followed',Follow::where('following_id',Auth::user()->id)->get());
+            $view->with('followed',Follow::where('followed_id',Auth::user()->id)->get());
         });
         //
     }

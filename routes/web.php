@@ -52,8 +52,17 @@ Route::post('/top/{id}/delete','PostsController@delete')->name('delete');
 
 Route::get('/profile','UsersController@profile');
 
+Route::post('/profile/{id}/edit','UsersController@editPro')->name('editPro');
+
+
+
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@search');
+
+// フォローするルート
+Route::get('/following/{id}','FollowsController@newFollow')->name('newFollow');
+// フォロー解除ルート
+Route::get('/stop/{id}','FollowsController@stopFollow')->name('stopFollow');
 
 Route::get('/search_result','UsersController@surf');
 Route::post('/search_result','UsersController@surf');
@@ -62,6 +71,8 @@ Route::post('/search_result','UsersController@surf');
 Route::get('/follow-list','FollowsController@followList');
 
 Route::get('/follower-list','FollowsController@followerList');
+
+
 
 
 Route::get('logout','Auth\LoginController@login');
