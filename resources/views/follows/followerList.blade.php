@@ -4,16 +4,18 @@
 <div class="follow-header">
     <h1>Follower List</h1>
   <div class='icon-list'>
-    <p>あああああああああああ</p>
-      <p>あああああああああああ</p>
-      <p>あああああああああああ</p>
-      <p>あああああああああああ</p>
+    @foreach($followed_user as $image)
+    <a href="{{ route('othersProfile',['id'=>$image->id]) }}"><img src="{{asset($image->images)}}"></a>
+    @endforeach
   </div>
 </div>
 <table>
-  @foreach($followed_post as $followed)
+  @foreach($followed_post as $value)
 <tr class="post-box">
-  <td class="">{{ $followed->post}}</td>
+  <td><a href="{{ route('othersProfile',['id'=>$value->user->id]) }}"><img src="{{asset($value->user->images)}}"></a></td>
+  <td>{{ $value->user->username}}</td>
+  <td>{{ $value->post}}</td>
+  <td>{{ $value->created_at}}</td>
   </tr>
   @endforeach
   </table>

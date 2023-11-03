@@ -37,7 +37,7 @@
                     <li class="accordion-list"><a href="/profile">プロフィール</a></li>
                     <li class="accordion-list"><a href="/logout">ログアウト</a></li>
                 </ul>
-                <!-- <img src="{{Auth::user()->images }}"> -->
+                <img src="{{asset(Auth::user()->images) }}">
             </div>
         </div>
 </header>

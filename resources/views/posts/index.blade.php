@@ -2,9 +2,11 @@
 
 @section('content')
 <!-- <h2>機能を実装していきましょう。</h2> -->
+<!-- 画像表示練習的なもの -->
+<!-- <img src="storage/images/icon1.png"　width="100" height="100"> -->
+<!-- <img src="{{ asset('storage/images/icon.png') }}" width="100" height="100"> -->
 
 <div class='create-post'>
-  {{Auth::user()->images }}
 {!! Form::open(['url' => '/top']) !!}
 <input class="text" type="text" name="tweet"placeholder="　投稿内容を入力してください" maxlength="150" minlength="1" required>
 <span class="send-icon">
@@ -17,8 +19,7 @@
 <table class="post">
 @foreach($posts as $posts)
 <tr class="post-box">
-  <td class="post-img"><img src="images/{{$posts->user->images}}"> </td>
-  <td class="post-img">{{$posts->user->id}} </td>
+  <td class="post-img"><img src="{{asset($posts->user->images)}}"> </td>
   <td class="post-name">{{ $posts->user->username}}</td>
   <td class="post-comment">{{ $posts->post }}</td>
   <td class="post-date">{{ $posts->created_at }}</td>

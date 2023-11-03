@@ -15,14 +15,18 @@ class FollowsController extends Controller
 
 
     public function followList(){
+        // ログインユーザー　が　フォローしている人のUsersテーブル情報を取得
+        $following_user=Auth::user()->follows()->get();
         $following_id=Follow::where('following_id',Auth::user()->id)->get('followed_id');
         $following_post=Post::with('user')->whereIn('user_id',$following_id)->orderBy('created_at','desc')->get();
-        return view('follows.followList',compact('following_post'));
+        return view('follows.followList',compact('following_post','following_user'));
     }
     public function followerList(){
+        // ログインユーザー　を　フォローしている人のUsersテーブル情報を取得
+        $followed_user=Auth::user()->followed()->get();
         $followed_id=Follow::where('followed_id',Auth::user()->id)->orderBy('created_at','desc')->get('following_id');
         $followed_post=Post::with('user')->whereIn('user_id',$followed_id)->get();
-        return view('follows.followerList',compact('followed_post'));
+        return view('follows.followerList',compact('followed_post','followed_user'));
     }
 
     public function followCount(){
@@ -39,7 +43,6 @@ class FollowsController extends Controller
         if(!$is_following){
             $my_id=Auth::user()->id;
             $new_follow=$id;
-
              Follow::create([
             'following_id'=>$my_id,
             'followed_id'=>$new_follow,

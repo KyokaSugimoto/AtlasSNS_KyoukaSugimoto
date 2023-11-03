@@ -52,7 +52,7 @@ Route::post('/top/{id}/delete','PostsController@delete')->name('delete');
 
 Route::get('/profile','UsersController@profile');
 
-Route::post('/profile/{id}/edit','UsersController@editPro')->name('editPro');
+Route::post('/profile','UsersController@editPro')->name('editPro');
 
 
 
@@ -69,9 +69,9 @@ Route::post('/search_result','UsersController@surf');
 
 
 Route::get('/follow-list','FollowsController@followList');
+Route::get('/others/{id}','UsersController@othersProfile')->name('othersProfile');
 
 Route::get('/follower-list','FollowsController@followerList');
-
 
 
 
