@@ -9,6 +9,7 @@ use App\User;
 use Auth;
 use App\Post;
 use App\Follow;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -20,10 +21,8 @@ class UsersController extends Controller
 
         return view('users.profile',compact('user_info'));
     }
-
     // プロフィール更新
     public function editPro(Request $request){
-
         $request->validate([
             'username'=>'required|min:2|max:12',
             'mail'=>'required|min:5|max:40|email|unique:users,mail,'.$request->id.',id',
@@ -32,20 +31,34 @@ class UsersController extends Controller
             'bio'=>'max:150',
             'images'=>'',
         ]);
+
+        // フォームの全データ
+        $update_user=$request->all();
+
         $id=$request->input('id');
         $username=$request->input('username');
         $mail=$request->input('mail');
         $password=$request->input('password');
         $bio=$request->input('bio');
+        $file_name=$request->icon->getClientOriginalName();
+        $new_image=$request->icon->storeAs('',$file_name,'public');        // dd($request->file('icon'));
+        // $image_name=$new_image->getClientOriginalName();
+        // $new_image=$request->icon->storeAs('',$file_name,'public/images');
+
 
         User::where('id',$id)->update([
             'username'=>$username,
             'mail'=>$mail,
             'password'=>bcrypt($password),
             'bio'=>$bio,
+            'images'=>$new_image,
+
         ]);
+
         return redirect('/top');
     }
+
+
 
 
     // 他ユーザーのプロフィールページ表示

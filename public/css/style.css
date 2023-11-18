@@ -143,6 +143,11 @@ ul li a {
 
 }
 
+.post-icon {
+    width: 20px;
+    height: 20px;
+}
+
 .post-box {
     background-color: #fff;
     border: #727272 solid 5px;

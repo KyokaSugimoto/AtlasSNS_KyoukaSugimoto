@@ -18,25 +18,28 @@
 
 
 //ログアウト中のページ
-// Route::group(['middleware' => 'guest'],function(){
+Route::group(['middleware' => 'auth'], function () {
+Auth::routes();
+
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 
-Route::get('/register', 'Auth\RegisterController@register_view');
+Route::get('/register', 'Auth\RegisterController@registerView');
 
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
-// });
+});
 
 
 
 
 //ログイン中のページ
-
-// Route::group(['middleware' => 'auth'],function(){
 // ログイン後最初の画面
+
+Route::group(['middleware' => 'auth'], function () {
+Auth::routes();
 Route::get('/top','PostsController@index')->name('default');
 Route::post('/top','PostsController@index')->name('default');
 
@@ -46,9 +49,6 @@ Route::post('/top','PostsController@post');
 Route::post('/top/{id}/update','PostsController@update')->name('update');
 
 Route::post('/top/{id}/delete','PostsController@delete')->name('delete');
-
-
-
 
 Route::get('/profile','UsersController@profile');
 
@@ -73,8 +73,6 @@ Route::get('/others/{id}','UsersController@othersProfile')->name('othersProfile'
 
 Route::get('/follower-list','FollowsController@followerList');
 
-
-
 Route::get('logout','Auth\LoginController@login');
-
-// });
+});
+    //

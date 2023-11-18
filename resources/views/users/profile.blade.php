@@ -1,6 +1,6 @@
 @extends('layouts.login')
 @section('content')
-<form class="edit-pro" action="{{ route('editPro')}}" method="POST">
+<form class="edit-pro" action="{{ route('editPro')}}" method="POST" enctype='multipart/form-data' file="true">
   @csrf
 <div class="edit-pro-form">
   <!-- ↓ 別になくてよい -->
@@ -23,7 +23,7 @@
       <input name="bio" value="{{ $user_info->bio}}" >
 
     <label>icon image</label>
-    <input name="icon-image" type="file" accept=".jpg,.png,.bmp,.gif,.svg" placeholder="">
+    <input name="icon" type="file" accept=".jpg,.png,.bmp,.gif,.svg" placeholder="">
 
     <input name="id" type="hidden" value="{{Auth::user()->id}}">
 

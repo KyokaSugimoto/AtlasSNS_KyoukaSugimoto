@@ -12,10 +12,10 @@ class FollowsTableSeeder extends Seeder
     public function run()
     {
         DB::table('follows')->insert([
-            ['following_id'=>'3','followed_id'=>'1'],
-            ['following_id'=>'2','followed_id'=>'4'],
-            ['following_id'=>'5','followed_id'=>'1'],
-            ['following_id'=>'1','followed_id'=>'6'],
+            ['following_id'=>'21','followed_id'=>'23'],
+            ['following_id'=>'22','followed_id'=>'21'],
+            ['following_id'=>'23','followed_id'=>'22'],
+            ['following_id'=>'24','followed_id'=>'22'],
         ]);
 
         //

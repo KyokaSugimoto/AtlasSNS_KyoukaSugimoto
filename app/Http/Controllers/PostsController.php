@@ -13,10 +13,10 @@ class PostsController extends Controller
 {
 
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index(){
         // ポストテーブルのレコード取得

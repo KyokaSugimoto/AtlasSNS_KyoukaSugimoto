@@ -19,7 +19,7 @@
 <table class="post">
 @foreach($posts as $posts)
 <tr class="post-box">
-  <td class="post-img"><img src="{{asset($posts->user->images)}}"> </td>
+  <td class="post-img"><img src="{{asset('storage/'.$posts->user->images)}}"> </td>
   <td class="post-name">{{ $posts->user->username}}</td>
   <td class="post-comment">{{ $posts->post }}</td>
   <td class="post-date">{{ $posts->created_at }}</td>
