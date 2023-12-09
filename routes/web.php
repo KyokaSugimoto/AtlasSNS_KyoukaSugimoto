@@ -11,15 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/home', 'HomeController@index')->name('home');
-
 
 //ログアウト中のページ
-Route::group(['middleware' => 'auth'], function () {
-Auth::routes();
+Route::group(['middleware' => 'guest'], function () {
+
 
 Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -39,7 +34,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 // ログイン後最初の画面
 
 Route::group(['middleware' => 'auth'], function () {
-Auth::routes();
+    // Route::middleware(['auth'])->group(function () {
+
 Route::get('/top','PostsController@index')->name('default');
 Route::post('/top','PostsController@index')->name('default');
 
@@ -73,6 +69,6 @@ Route::get('/others/{id}','UsersController@othersProfile')->name('othersProfile'
 
 Route::get('/follower-list','FollowsController@followerList');
 
-Route::get('logout','Auth\LoginController@login');
+Route::get('/logout','Auth\LoginController@logout');
 });
     //

@@ -20,10 +20,16 @@
 </div>
 
 <table>
-@foreach($result as $result)
+@foreach($result as $user)
 <tr>
-  <td>{{ $result->username }}</td>
+  <td>{{ $user->username }}</td>
+@if(auth()->user()->isFollowing($user->id))
+  <td><button type="submit"><a class="follow-icon" href="{{ route('stopFollow',['id'=>$user->id]) }}">フォロー解除</a></button></td>
+@else
+  <td><button type="submit"><a class="stop-icon" href="{{ route('newFollow',['id'=>$user->id])}}">フォローする</a></button></td>
 </tr>
+@endif
 @endforeach
+
 </table>
 @endsection

@@ -21,6 +21,7 @@ class PostsController extends Controller
     public function index(){
         // ポストテーブルのレコード取得
         $post=Post::get();
+        // ddd($post);
         // フォーしている人のIDを取得
         $following_id=Auth::user()->follows()->pluck('followed_id');
         // dd();

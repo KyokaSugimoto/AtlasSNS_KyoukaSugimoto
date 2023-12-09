@@ -2,7 +2,7 @@
 @section('content')
 
 <table>
-<td><img src="{{asset($user_pro->images)}}"></td>
+<td><img src="{{asset('storage/'.$user_pro->images)}}"></td>
 <td>{{$user_pro->username}}</td>
 <td>{{$user_pro->bio}}</td>
 @if(auth()->user()->isFollowing($user_pro->id))
@@ -15,7 +15,7 @@
 <table>
     @foreach($user_post as $value)
 <tr class="post-box">
-  <td><img src="{{asset($user_pro->images)}}"></td>
+  <td><img src="{{asset('storage/'.$user_pro->images)}}"></td>
   <td>{{$value->user->username}}</td>
   <td>{{$value->post}}</td>
 </tr>
